@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: chat
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+    username: abc
+    password: TDungx28112003
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  validation:
+    enabled: true
+
+api:
+  prefix: /api/v1
+
+keys:
+  private: PRIVATE_KEY
+  public: PUBLIC_KEY
