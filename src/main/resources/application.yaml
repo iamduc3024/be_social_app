@@ -4,17 +4,27 @@ server:
 spring:
   application:
     name: chat
+
   datasource:
     url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
     username: postgres.znmnjzfrtqxqfufwrxqq
     password: Postgre123
     driver-class-name: org.postgresql.Driver
+
+  redis:
+    host: valid-mongrel-44979.upstash.io
+    port: 6379
+    password: Aa-zAAIjcDFjYzg4NDZjZDkyNzQ0NWZjYjE2NzViZWE3NDljZDdkNXAxMA
+    ssl: true
+
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
   validation:
     enabled: true
 
@@ -24,3 +34,7 @@ api:
 keys:
   private: PRIVATE_KEY
   public: PUBLIC_KEY
+
+logging:
+  level:
+    org.springframework.data.redis: DEBUG
