@@ -1,10 +1,13 @@
+server:
+  port: 8000
+
 spring:
   application:
     name: chat
   datasource:
     url: jdbc:postgresql://aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
-    username: abc
-    password: TDungx28112003
+    username: postgres.znmnjzfrtqxqfufwrxqq
+    password: Postgre123
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
