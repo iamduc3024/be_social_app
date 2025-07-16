@@ -1,0 +1,16 @@
+{
+    "context": {
+        "description": "Dự án Spring Boot quản lý các đoạn chat, dùng PostgreSQL và JWT để xác thực. Gồm các module: Tài khoản người dùng, Đoạn chat.",
+        "language": "Java",
+        "frameworks": [
+            "Spring Boot",
+            "Spring Security",
+            "JWT"
+        ],
+        "codeStyle": "Sử dụng camelCase, comment rõ ràng, RESTful API chuẩn",
+        "conventions": {
+            "controllerNaming": "Tên controller kết thúc bằng 'Controller', ví dụ: UserController",
+            "servicePattern": "Sử dụng interface và class implementation, ví dụ: UserService + UserServiceImpl"
+        }
+    }
+}
