@@ -11,6 +11,16 @@ spring:
     password: Postgre123
     driver-class-name: org.postgresql.Driver
 
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000        # 30s
+      max-lifetime: 1800000      # 30 phút
+      connection-timeout: 30000  # 30s
+      data-source-properties:
+        prepareThreshold: 0
+        preparedStatementCacheQueries: 0
+
   redis:
     host: valid-mongrel-44979.upstash.io
     port: 6379

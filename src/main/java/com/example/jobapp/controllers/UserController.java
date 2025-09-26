@@ -1,5 +1,6 @@
 package com.example.jobapp.controllers;
 
+import com.example.jobapp.dtos.requests.RequestCreateUserDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class UserController {
 
     @PostMapping("/create_user")
     @Operation(summary = "Create a new user", description = "Creates a new user with the provided details")
-    public User createUser(@RequestBody User user) {
+    public User createUser(@RequestBody RequestCreateUserDTO user) {
         return userService.createUser(user);
     }
 }

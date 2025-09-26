@@ -1,5 +1,7 @@
 package com.example.jobapp.impls;
 
+import com.example.jobapp.dtos.requests.RequestCreateUserDTO;
+import com.example.jobapp.mappers.MapperUtils;
 import com.example.jobapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +19,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public User createUser(RequestCreateUserDTO user) {
+        User newUser = MapperUtils.map(user, User.class);
+        return userRepository.save(newUser);
     }
 }
