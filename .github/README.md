@@ -40,3 +40,5 @@
 | 📂 API | RESTful endpoints với chuẩn JSON |
 
 ---
+
+Swagger Link: /swagger-ui/index.html
