@@ -14,9 +14,9 @@ spring:
     hikari:
       maximum-pool-size: 10
       minimum-idle: 5
-      idle-timeout: 30000        # 30s
-      max-lifetime: 1800000      # 30 phút
-      connection-timeout: 30000  # 30s
+      idle-timeout: 30000 # 30s
+      max-lifetime: 1800000 # 30 phút
+      connection-timeout: 30000 # 30s
       data-source-properties:
         prepareThreshold: 0
         preparedStatementCacheQueries: 0
@@ -44,6 +44,17 @@ api:
 keys:
   private: PRIVATE_KEY
   public: PUBLIC_KEY
+
+google:
+  client:
+    id: ${GOOGLE_CLIENT_ID}
+    secret: ${GOOGLE_CLIENT_SECRET}
+  redirect:
+    uri: http://localhost:8000/api/v1/auth/google/callback
+
+jwt:
+  secret: "TDungx2k3TDungx2k3TDungx2k3TDungx2k3TDungx2k3TDungx2k3"
+  expiration: 86400000
 
 logging:
   level:

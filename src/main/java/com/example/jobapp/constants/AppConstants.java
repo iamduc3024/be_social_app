@@ -22,6 +22,9 @@ public class AppConstants {
         public static final String STATUS_400 = "400";
         public static final String STATUS_500 = "500";
 
+        // SYSTEM
+        public static final String SYSTEM = "SYSTEM";
+
         // TABLE
         public static final String USERS = "USERS";
 

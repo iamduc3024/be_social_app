@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.example.jobapp.constants.AppConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -26,20 +27,20 @@ import lombok.experimental.SuperBuilder;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
     @CreatedBy
-        @Column(name = "created_by", updatable = false)
-        private String createdBy;
+    @Column(name = "created_by", updatable = false)
+    private String createdBy = AppConstants.SYSTEM;
 
-        @CreatedDate
-        @Column(name = "created_date", updatable = false)
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Ho_Chi_Minh")
-        private Date createdDate;
+    @CreatedDate
+    @Column(name = "created_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Ho_Chi_Minh")
+    private Date createdDate = new Date();
 
-        @LastModifiedBy
-        @Column(name = "modified_by")
-        private String modifiedBy;
+    @LastModifiedBy
+    @Column(name = "modified_by")
+    private String modifiedBy = AppConstants.SYSTEM;
 
-        @LastModifiedDate
-        @Column(name = "modified_date")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Ho_Chi_Minh")
-        private Date modifiedDate;
+    @LastModifiedDate
+    @Column(name = "modified_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Ho_Chi_Minh")
+    private Date modifiedDate = new Date();
 }
