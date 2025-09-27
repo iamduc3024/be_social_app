@@ -2,9 +2,13 @@ package com.example.jobapp.entities;
 
 import java.util.Date;
 
+import com.example.jobapp.constants.UserRole;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,19 +32,24 @@ public class User extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Schema(description = "Phone number")
-    @Column(name = "phone")
-    private String phone;
-
     @Schema(description = "Email")
     @Column(name = "email")
     private String email;
 
-    @Schema(description = "Password")
-    @Column(name = "password")
-    private String password;
+    @Schema(description = "Avatar URL")
+    @Column(name = "avatar_url")
+    private String avatarURL;
 
-    @Schema(description = "Birth Date")
-    @Column(name = "birth_date")
-    private Date birthDate;
+    @Schema(description = "Provider (GOOGLE, FACEBOOK, ...)")
+    @Column(name = "privider")
+    private String provider;
+
+    @Schema(description = "Provider ID")
+    @Column(name = "provider_id")
+    private String providerId;
+
+    @Schema(description = "Role (ADMIN, USER)")
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 }
