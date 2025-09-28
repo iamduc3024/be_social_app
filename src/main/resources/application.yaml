@@ -22,9 +22,9 @@ spring:
         preparedStatementCacheQueries: 0
 
   redis:
-    host: valid-mongrel-44979.upstash.io
+    host: kind-lab-13771.upstash.io
     port: 6379
-    password: Aa-zAAIjcDFjYzg4NDZjZDkyNzQ0NWZjYjE2NzViZWE3NDljZDdkNXAxMA
+    password: ATXLAAIncDI3ZjJiODYyYTRlMzI0YzgzYjhmZWI4NGIxYmE5YmFkYXAyMTM3NzE
     ssl: true
 
   jpa:

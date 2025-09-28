@@ -59,4 +59,17 @@ public class JwtServiceImpl implements JwtService {
     return claims.getSubject();
   }
 
+  @Override
+  public String generateRefreshToken(User user) {
+    // Refresh token valid for 7 days
+    long refreshTokenExpirationMs = 7 * 24 * 60 * 60 * 1000;
+    return Jwts.builder()
+        .setSubject(user.getEmail())
+        .claim("userId", user.getId())
+        .setIssuedAt(new Date())
+        .setExpiration(new Date(System.currentTimeMillis() + refreshTokenExpirationMs))
+        .signWith(key, SignatureAlgorithm.HS256)
+        .compact();
+  }
+
 }

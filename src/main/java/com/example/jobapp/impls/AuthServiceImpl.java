@@ -2,8 +2,10 @@ package com.example.jobapp.impls;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,10 +36,13 @@ public class AuthServiceImpl implements AuthService {
 
   private final RestTemplate restTemplate = new RestTemplate();
   private final ObjectMapper objectMapper = new ObjectMapper();
+  private final RedisTemplate<String, Object> redisTemplate;
 
-  public AuthServiceImpl(UserRepository userRepository, JwtService jwtService) {
+  public AuthServiceImpl(UserRepository userRepository, JwtService jwtService,
+      RedisTemplate<String, Object> redisTemplate) {
     this.userRepository = userRepository;
     this.jwtService = jwtService;
+    this.redisTemplate = redisTemplate;
   }
 
   @Override
@@ -82,6 +87,10 @@ public class AuthServiceImpl implements AuthService {
     user.setRole(UserRole.USER);
     userRepository.save(user);
 
+    // Generate refresh token and save to Redis
+    String refreshToken = jwtService.generateRefreshToken(user);
+    saveRefreshToken(user.getId().toString(), refreshToken);
+
     // Generate JWT
     String jwt = jwtService.generateToken(user);
 
@@ -92,6 +101,19 @@ public class AuthServiceImpl implements AuthService {
     response.setFullName(user.getName());
     response.setAvatarUrl(user.getAvatarURL());
     return response;
+  }
+
+  public void saveRefreshToken(String userId, String refreshToken) {
+    String key = "refresh:" + userId;
+    redisTemplate.opsForValue().set(key, refreshToken, 7, TimeUnit.DAYS);
+  }
+
+  public String getRefreshToken(String userId) {
+    return (String) redisTemplate.opsForValue().get("refresh:" + userId);
+  }
+
+  public void deleteRefreshToken(String userId) {
+    redisTemplate.delete("refresh:" + userId);
   }
 
 }

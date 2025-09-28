@@ -8,5 +8,7 @@ public interface JwtService {
   boolean validateToken(String token);
 
   String extractEmail(String token);
-  
+
+  String generateRefreshToken(User user);
+
 }
