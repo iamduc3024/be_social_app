@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.jobapp.constants.ProviderConstants;
@@ -16,6 +17,7 @@ import com.example.jobapp.services.JwtService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class AuthServiceImpl implements AuthService {
 
   @Value("${google.client.id}")
